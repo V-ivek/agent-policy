@@ -1,0 +1,63 @@
+{
+  "name": "@47nation/agent-policy",
+  "version": "0.1.0",
+  "description": "Vendor-neutral CLI to keep AI coding-agent instruction files in sync and enforce commit attribution.",
+  "keywords": [
+    "agents",
+    "ai",
+    "claude",
+    "copilot",
+    "agents-md",
+    "claude-md",
+    "cli"
+  ],
+  "license": "MIT",
+  "author": "Vivek <vivek.selvarajan@getbaraka.com>",
+  "homepage": "https://github.com/V-ivek/agent-policy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/V-ivek/agent-policy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/V-ivek/agent-policy/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "agent-policy": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^3.0.1",
+    "commander": "^12.0.0",
+    "yaml": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}

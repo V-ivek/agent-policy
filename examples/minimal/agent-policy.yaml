@@ -1,0 +1,27 @@
+version: 1
+
+project:
+  name: minimal-example
+  description: "A tiny agent-policy config with one section and default attribution."
+
+policy:
+  sections:
+    - id: overview
+      title: Overview
+      body: |
+        This is the smallest useful agent-policy config. Use it as a starting
+        point and add sections as the repo grows.
+
+attribution:
+  assisted_by:
+    required: true
+
+renderers:
+  agents_md:
+    enabled: true
+  claude_md:
+    enabled: true
+    concise: true
+  copilot_instructions:
+    enabled: true
+    concise: true

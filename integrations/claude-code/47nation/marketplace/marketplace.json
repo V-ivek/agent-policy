@@ -1,0 +1,13 @@
+{
+  "_note": "PROVISIONAL — template only. See marketplace/README.md before publishing.",
+  "publisher": "47nation",
+  "plugins": [
+    {
+      "name": "agent-policy",
+      "version": "0.1.0",
+      "description": "Keep AI coding-agent instruction files in sync and enforce commit attribution.",
+      "homepage": "https://github.com/V-ivek/agent-policy",
+      "source": "https://github.com/V-ivek/agent-policy"
+    }
+  ]
+}

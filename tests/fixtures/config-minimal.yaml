@@ -1,0 +1,9 @@
+version: 1
+project:
+  name: my-repo
+policy:
+  sections:
+    - id: overview
+      title: Project overview
+      body: |
+        Hello world.

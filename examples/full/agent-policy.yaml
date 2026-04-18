@@ -1,0 +1,75 @@
+version: 1
+
+project:
+  name: full-example
+  description: "A realistic agent-policy config that exercises every renderer and every attribution option."
+
+policy:
+  sections:
+    - id: overview
+      title: Project overview
+      body: |
+        This repo is a worked example of an agent-policy setup. It demonstrates
+        pinned sections (included everywhere), renderer-targeted sections,
+        and full vs. concise output modes.
+      pinned: true
+
+    - id: conventions
+      title: Conventions
+      body: |
+        - Prefer small, focused modules.
+        - Tests live alongside the code they test.
+        - No TODO graveyards. Delete stale comments.
+      renderers: [agents_md, claude_md]
+
+    - id: detailed-workflow
+      title: Detailed workflow
+      body: |
+        This section is long enough that it should only live in the full
+        AGENTS.md document. It explains the branching strategy, review
+        expectations, and how to recover from merge conflicts. Concise
+        renderers (CLAUDE.md, copilot-instructions.md) omit it.
+      renderers: [agents_md]
+
+    - id: copilot-tips
+      title: Copilot tips
+      body: |
+        Short, imperative sentences work best for Copilot's instruction
+        file. Avoid long explanations or references to external documents.
+      renderers: [copilot_instructions]
+
+attribution:
+  assisted_by:
+    required: true
+    format: "Assisted-by: {agent}:{model}"
+    human_marker: "Assisted-by: n/a"
+    allow_multiple: true
+
+renderers:
+  agents_md:
+    enabled: true
+    path: AGENTS.md
+  claude_md:
+    enabled: true
+    path: CLAUDE.md
+    concise: true
+  copilot_instructions:
+    enabled: true
+    path: .github/copilot-instructions.md
+    concise: true
+
+task_policy:
+  commit_on_task_completion: true
+  allow_checkpoint_commits: true
+  require_user_prompt_for_squash: true
+
+checkpoint_commit:
+  enabled: true
+  subject_format: "checkpoint(task={task_id}, seq={seq}, agent={agent}, model={model}, ts={ts}): {summary}"
+  run_precommit: false
+
+final_commit:
+  conventional_commits: true
+  run_precommit: true
+  required_footers:
+    - "Assisted-by"

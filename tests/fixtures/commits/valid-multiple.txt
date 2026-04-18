@@ -1,0 +1,4 @@
+feat: hybrid
+
+Assisted-by: claude:opus-4-7
+Assisted-by: copilot:v1

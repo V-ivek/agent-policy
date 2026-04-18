@@ -1,0 +1,12 @@
+src/
+tests/
+examples/
+docs/
+integrations/
+.github/
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+.eslintrc.cjs
+.prettierrc
+.prettierignore
