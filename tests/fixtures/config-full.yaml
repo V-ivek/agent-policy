@@ -1,0 +1,62 @@
+version: 1
+
+project:
+  name: full-example
+  description: "A realistic example exercising every field in the schema."
+
+policy:
+  sections:
+    - id: overview
+      title: Project overview
+      body: |
+        This repo is a realistic example of an agent-policy config. It
+        exercises every renderer target and all attribution options.
+      pinned: true
+    - id: conventions
+      title: Coding conventions
+      body: |
+        - Prefer small, focused modules.
+        - Tests live alongside the code they test.
+      renderers: [agents_md, claude_md]
+    - id: detailed-workflow
+      title: Detailed workflow
+      body: |
+        This section is long enough that it should only live in the full
+        AGENTS.md document, not in the concise mirrors.
+      renderers: [agents_md]
+
+attribution:
+  assisted_by:
+    required: true
+    format: "Assisted-by: {agent}:{model}"
+    human_marker: "Assisted-by: n/a"
+    allow_multiple: true
+
+renderers:
+  agents_md:
+    enabled: true
+    path: AGENTS.md
+  claude_md:
+    enabled: true
+    path: CLAUDE.md
+    concise: true
+  copilot_instructions:
+    enabled: true
+    path: .github/copilot-instructions.md
+    concise: true
+
+task_policy:
+  commit_on_task_completion: true
+  allow_checkpoint_commits: true
+  require_user_prompt_for_squash: true
+
+checkpoint_commit:
+  enabled: true
+  subject_format: "checkpoint(task={task_id}, seq={seq}, agent={agent}, model={model}, ts={ts}): {summary}"
+  run_precommit: false
+
+final_commit:
+  conventional_commits: true
+  run_precommit: true
+  required_footers:
+    - "Assisted-by"

@@ -1,0 +1,5 @@
+feat: widget
+
+Assisted-by: claude:opus-4-7
+
+actual body goes here

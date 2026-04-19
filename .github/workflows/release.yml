@@ -1,0 +1,39 @@
+# Release workflow — DISABLED for v0.1.
+#
+# v0.1.0 was published manually (npm publish --access public). Automated
+# publish via this workflow requires an NPM_TOKEN automation token to be
+# set as a repo secret. When ready to re-enable, generate a token at
+# npmjs.com (Access Tokens → Classic → Automation), set it with:
+#
+#   gh secret set NPM_TOKEN --repo V-ivek/agent-policy
+#
+# and then uncomment everything below.
+#
+# name: Release
+#
+# on:
+#   push:
+#     tags:
+#       - 'v*.*.*'
+#
+# jobs:
+#   publish:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write
+#       id-token: write
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: 22
+#           registry-url: https://registry.npmjs.org
+#       - run: npm ci
+#       - run: npm test
+#       - run: npm run build
+#       - run: npm publish --access public --provenance
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#       - uses: softprops/action-gh-release@v2
+#         with:
+#           generate_release_notes: true
