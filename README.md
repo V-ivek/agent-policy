@@ -2,9 +2,12 @@
 
 [![CI](https://github.com/V-ivek/agent-policy/actions/workflows/ci.yml/badge.svg)](https://github.com/V-ivek/agent-policy/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@47nation/agent-policy.svg)](https://www.npmjs.com/package/@47nation/agent-policy)
+[![self-hosted](https://img.shields.io/badge/self--hosted-yes-success.svg)](agent-policy.yaml)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Vendor-neutral CLI to keep AI coding-agent instruction files in sync and enforce commit attribution.**
+
+This repository self-hosts: [`AGENTS.md`](AGENTS.md), [`CLAUDE.md`](CLAUDE.md), and [`.github/copilot-instructions.md`](.github/copilot-instructions.md) are generated from [`agent-policy.yaml`](agent-policy.yaml) by `agent-policy sync`.
 
 ## Why this exists
 
